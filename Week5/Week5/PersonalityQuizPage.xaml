@@ -8,16 +8,12 @@
              x:Class="Week5.PersonalityQuizPage">
     <ContentPage.Content>
         <StackLayout>
+            <Image IsVisible="False" Source="" x:Name="QuizPicture"></Image>
             <Label HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" x:Name="QuizResults"
                TextColor="Black" FontSize="Title" FontAttributes="Bold"
                IsVisible="False" Text="" />
+            
 
-            <BoxView Color="Teal">
-                <BoxView.GestureRecognizers>
-                    <SwipeGestureRecognizer Direction="Left" Swiped="OnSwiped"/>
-                    <SwipeGestureRecognizer Direction="Right" Swiped="OnSwiped"/>
-                </BoxView.GestureRecognizers>
-            </BoxView>
             <ListView x:Name="QuizList"
                   ItemsSource="{x:Static local:EdEddEddyQuizViewModel.QuizQuestions}"
                   ItemTapped="QuizList_OnItemTapped">
@@ -38,8 +34,6 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

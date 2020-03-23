@@ -81,8 +81,9 @@ namespace Week5
         private void Submit_Quiz(object sender, EventArgs e)
         {
             var character = EdEddEddyQuizViewModel.GradeQuiz();
+            int picture = Convert.ToInt32(EdEddEddyQuizViewModel.GradeQuiz());
 
-           
+
             QuizResults.IsVisible = true;
             ResetButton.IsVisible = true;
 
@@ -91,7 +92,30 @@ namespace Week5
             AnswerLabel.IsVisible = false;
             InputGrid.IsVisible = false;
             SubmitButton.IsVisible = false;
+            QuizPicture.IsVisible = true;
+            switch (picture)
+            {
+                case 0:
+                    QuizPicture.Source = "https://vignette.wikia.nocookie.net/edwikia/images/7/7c/Ed.1.png/revision/latest?cb=20120130210345";      
+                break;
+                case 1:
+                    QuizPicture.Source = "https://vignette.wikia.nocookie.net/edwikia/images/7/72/Edd.1.png/revision/latest?cb=20120130210759";
+                    break;
+                case 2:
+                    QuizPicture.Source = "https://vignette.wikia.nocookie.net/edwikia/images/c/cd/Eddy.png/revision/latest?cb=20170610052003";
+                    break;
+                case 3:
+                    QuizPicture.Source = "https://vignette.wikia.nocookie.net/edwikia/images/6/64/Rolf_transparent.png/revision/latest?cb=20171030001040";
+                    break;
+                default:
+                    QuizPicture.Source = "https://vignette.wikia.nocookie.net/edwikia/images/7/72/Edd.1.png/revision/latest?cb=20120130210759";
+                    break;
 
+
+
+
+
+            }
             QuizResults.Text = $"You kind are kind of like  {character}.";
         }
 
@@ -112,6 +136,7 @@ namespace Week5
 
             QuizList.IsVisible = true;
             SubmitButton.IsVisible = true;
+            QuizPicture.IsVisible = false;
         }
 
         private void OnSwiped(object sender, SwipedEventArgs e)
