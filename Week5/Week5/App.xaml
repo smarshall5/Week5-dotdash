@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="Week5.App">
     <Application.Resources>
+        <!-- Styles -->
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="Purple"/>
+            <Setter Property="BarTextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="Teal"/>
+        </Style>
+        <!-- Styles -->
 
     </Application.Resources>
 </Application>

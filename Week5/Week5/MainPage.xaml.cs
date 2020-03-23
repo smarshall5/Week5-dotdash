@@ -17,24 +17,16 @@ namespace Week5
         {
             InitializeComponent();
         }
-        string entryText = "";
-        string outText = "";
-         void ClickOnDot(object sender, EventArgs args)
+        private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            entryText += ".";
+            (sender as ListView).SelectedItem = null;
 
-        }
-        void ClickOnDash(object sender, EventArgs args) {
-            entryText += "-";
-        }
-        void ClickOnSubmit(object sender, EventArgs args)
-        {
-
-            char text = Morse.MorseCoder(entryText);
-            outText += text;
-            entryText = "";
-            output.Text = outText;
-
+            if (args.SelectedItem != null)
+            {
+                var pageData = args.SelectedItem as PageDataViewModel;
+                var page = (Page)Activator.CreateInstance(pageData.Type);
+                await Navigation.PushAsync(page);
+            }
         }
 
     }
