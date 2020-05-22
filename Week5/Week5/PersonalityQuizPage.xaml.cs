@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Newtonsoft.Json;
+using RestSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,11 +16,15 @@ namespace Week5
         public PersonalityQuizPage()
         {
             InitializeComponent();
-        }
-     
 
-       
-      private void QuizList_OnItemTapped(object sender, ItemTappedEventArgs e)
+
+        }
+
+        private IRestClient _client = new RestClient("https://andruxnet-random-famous-quotes.p.rapidapi.com/?count=1");
+
+
+
+        private void QuizList_OnItemTapped(object sender, ItemTappedEventArgs e)
       {
           var activeQuestion = (EdEddEddyQuizViewModel)e.Item;
 
@@ -116,7 +121,12 @@ namespace Week5
 
 
             }
-            QuizResults.Text = $"You kind are kind of like  {character}.";
+            var response = _client.Execute(new RestRequest(Method.GET));
+            var quote = response != null && response.IsSuccessful
+                ? JsonConvert.DeserializeObject<RandomQuote>(response.Content).quote : "The default quote is me'";
+            QuizResults.Text = $"You are kind of like  {character}." +
+                               $"The quote of the day is : {quote}";
+
         }
 
         private void Reset_Quiz(object sender, EventArgs e)

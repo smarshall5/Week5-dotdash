@@ -13,6 +13,7 @@
                TextColor="Black" FontSize="Title" FontAttributes="Bold"
                IsVisible="False" Text="" />
             
+            
 
             <ListView x:Name="QuizList"
                   ItemsSource="{x:Static local:EdEddEddyQuizViewModel.QuizQuestions}"
